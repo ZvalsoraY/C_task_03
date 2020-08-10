@@ -18,7 +18,7 @@ namespace C_task_03
         }
         public static long Euclidean(long a, long b, out string elapsedTime) //greatest common divisor Recursive Stein's Algorithm
         {
-            elapsedTime = "RunTime ";
+            //elapsedTime = "RunTime ";
             Stopwatch stopwatchStein = new Stopwatch();
             stopwatchStein.Start();
             long answer = Euclidean(a, b);
@@ -26,9 +26,10 @@ namespace C_task_03
             // Get the elapsed time as a TimeSpan value.
             TimeSpan timeStein = stopwatchStein.Elapsed;
             // Format and display the TimeSpan value.
-            elapsedTime = elapsedTime + String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                timeStein.Hours, timeStein.Minutes, timeStein.Seconds,
-                timeStein.Milliseconds / 10);
+            //elapsedTime = elapsedTime + String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            //    timeStein.Hours, timeStein.Minutes, timeStein.Seconds,
+            //    timeStein.Milliseconds / 10);
+            elapsedTime = timeStein.TotalMilliseconds.ToString();
             return answer;
         }
         public static long Euclidean(long var1, long var2, long var3)  //greatest common divisor Euclidean Algorithm
@@ -123,17 +124,12 @@ namespace C_task_03
 
         public static long Stein(long a, long b, out string elapsedTime) //greatest common divisor Recursive Stein's Algorithm
         {
-            elapsedTime = "RunTime ";
             Stopwatch stopwatchStein = new Stopwatch();
             stopwatchStein.Start();
             long answer = Stein(a, b);
             stopwatchStein.Stop();
-            // Get the elapsed time as a TimeSpan value.
             TimeSpan timeStein = stopwatchStein.Elapsed;
-            // Format and display the TimeSpan value.
-            elapsedTime = elapsedTime + String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                timeStein.Hours, timeStein.Minutes, timeStein.Seconds,
-                timeStein.Milliseconds / 10);
+            elapsedTime = timeStein.TotalMilliseconds.ToString();
             return answer;  
         }
     }
@@ -197,14 +193,14 @@ namespace C_task_03
                 long[] Data = InputData(2);
                 string value;
                 nodRes = GCD.Stein(Data[0], Data[1], out value);
-                Console.WriteLine(value);
+                Console.WriteLine("RunTime {0} milliseconds", value);
             }
             else if (funSelection == 7)
             {
                 long[] Data = InputData(2);
                 string value;
                 nodRes = GCD.Euclidean(Data[0], Data[1], out value);
-                Console.WriteLine(value);
+                Console.WriteLine("RunTime {0} milliseconds", value);
             }
             else Console.WriteLine("Было введено не корректное значение.");
 
